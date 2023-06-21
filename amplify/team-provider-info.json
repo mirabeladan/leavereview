@@ -1,0 +1,23 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-review-staging-162540-authRole",
+      "UnauthRoleArn": "arn:aws:iam::819208491404:role/amplify-review-staging-162540-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::819208491404:role/amplify-review-staging-162540-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-review-staging-162540-deployment",
+      "UnauthRoleName": "amplify-review-staging-162540-unauthRole",
+      "StackName": "amplify-review-staging-162540",
+      "StackId": "arn:aws:cloudformation:us-east-1:819208491404:stack/amplify-review-staging-162540/432c0310-1050-11ee-883c-0a87a25859ab",
+      "AmplifyAppId": "dlwy67qyka83d"
+    },
+    "categories": {
+      "auth": {
+        "review": {}
+      },
+      "storage": {
+        "s3reviewstorage4de8a21d": {}
+      }
+    }
+  }
+}
