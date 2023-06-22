@@ -16,16 +16,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type PartyUpdateFormInputValues = {
     Field0?: string;
     Field1?: string;
+    Field2?: string;
 };
 export declare type PartyUpdateFormValidationValues = {
     Field0?: ValidationFunction<string>;
     Field1?: ValidationFunction<string>;
+    Field2?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PartyUpdateFormOverridesProps = {
     PartyUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     Field0?: PrimitiveOverrideProps<TextFieldProps>;
     Field1?: PrimitiveOverrideProps<TextFieldProps>;
+    Field2?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type PartyUpdateFormProps = React.PropsWithChildren<{
     overrides?: PartyUpdateFormOverridesProps | undefined | null;

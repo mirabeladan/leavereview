@@ -7,7 +7,7 @@ import {
 function App() {
   return (
      <div className='App' >
-        <h2>This is a heading in a div element</h2>
+        <h2>Welcome to the party picture sharing app! Here you can upload all the pictures you took at the party!</h2>
         <PartyCreateForm />
 
     </div>

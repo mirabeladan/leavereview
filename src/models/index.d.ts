@@ -14,6 +14,7 @@ type EagerParty = {
   readonly id: string;
   readonly Field0?: string | null;
   readonly Field1?: string | null;
+  readonly Field2?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -26,6 +27,7 @@ type LazyParty = {
   readonly id: string;
   readonly Field0?: string | null;
   readonly Field1?: string | null;
+  readonly Field2?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

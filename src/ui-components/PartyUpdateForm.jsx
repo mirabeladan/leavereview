@@ -26,9 +26,11 @@ export default function PartyUpdateForm(props) {
   const initialValues = {
     Field0: "",
     Field1: "",
+    Field2: "",
   };
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field1, setField1] = React.useState(initialValues.Field1);
+  const [Field2, setField2] = React.useState(initialValues.Field2);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = partyRecord
@@ -36,6 +38,7 @@ export default function PartyUpdateForm(props) {
       : initialValues;
     setField0(cleanValues.Field0);
     setField1(cleanValues.Field1);
+    setField2(cleanValues.Field2);
     setErrors({});
   };
   const [partyRecord, setPartyRecord] = React.useState(partyModelProp);
@@ -52,6 +55,7 @@ export default function PartyUpdateForm(props) {
   const validations = {
     Field0: [],
     Field1: [],
+    Field2: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -81,6 +85,7 @@ export default function PartyUpdateForm(props) {
         let modelFields = {
           Field0,
           Field1,
+          Field2,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -139,6 +144,7 @@ export default function PartyUpdateForm(props) {
             const modelFields = {
               Field0: value,
               Field1,
+              Field2,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;
@@ -164,6 +170,7 @@ export default function PartyUpdateForm(props) {
             const modelFields = {
               Field0,
               Field1: value,
+              Field2,
             };
             const result = onChange(modelFields);
             value = result?.Field1 ?? value;
@@ -177,6 +184,32 @@ export default function PartyUpdateForm(props) {
         errorMessage={errors.Field1?.errorMessage}
         hasError={errors.Field1?.hasError}
         {...getOverrideProps(overrides, "Field1")}
+      ></TextField>
+      <TextField
+        label="Field2"
+        isRequired={false}
+        isReadOnly={false}
+        value={Field2}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field0,
+              Field1,
+              Field2: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field2 ?? value;
+          }
+          if (errors.Field2?.hasError) {
+            runValidationTasks("Field2", value);
+          }
+          setField2(value);
+        }}
+        onBlur={() => runValidationTasks("Field2", Field2)}
+        errorMessage={errors.Field2?.errorMessage}
+        hasError={errors.Field2?.hasError}
+        {...getOverrideProps(overrides, "Field2")}
       ></TextField>
       <Flex
         justifyContent="space-between"

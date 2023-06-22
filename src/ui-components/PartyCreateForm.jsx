@@ -6,7 +6,14 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  Radio,
+  RadioGroupField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { StorageManager } from "@aws-amplify/ui-react-storage";
 import { Field, getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Party } from "../models";
@@ -24,18 +31,22 @@ export default function PartyCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
+    Field2: undefined,
     Field0: "",
     Field1: undefined,
   };
+  const [Field2, setField2] = React.useState(initialValues.Field2);
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field1, setField1] = React.useState(initialValues.Field1);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
+    setField2(initialValues.Field2);
     setField0(initialValues.Field0);
     setField1(initialValues.Field1);
     setErrors({});
   };
   const validations = {
+    Field2: [],
     Field0: [],
     Field1: [],
   };
@@ -65,6 +76,7 @@ export default function PartyCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
+          Field2,
           Field0,
           Field1,
         };
@@ -112,8 +124,50 @@ export default function PartyCreateForm(props) {
       {...getOverrideProps(overrides, "PartyCreateForm")}
       {...rest}
     >
+      <RadioGroupField
+        label="Whose party did you attend?"
+        name="Field2"
+        isReadOnly={false}
+        isRequired={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2: value,
+              Field0,
+              Field1,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field2 ?? value;
+          }
+          if (errors.Field2?.hasError) {
+            runValidationTasks("Field2", value);
+          }
+          setField2(value);
+        }}
+        onBlur={() => runValidationTasks("Field2", Field2)}
+        errorMessage={errors.Field2?.errorMessage}
+        hasError={errors.Field2?.hasError}
+        {...getOverrideProps(overrides, "Field2")}
+      >
+        <Radio
+          children="Anthony"
+          value="Anthony"
+          {...getOverrideProps(overrides, "Field2Radio0")}
+        ></Radio>
+        <Radio
+          children="Maria"
+          value="Maria"
+          {...getOverrideProps(overrides, "Field2Radio1")}
+        ></Radio>
+        <Radio
+          children="Li"
+          value="Li"
+          {...getOverrideProps(overrides, "Field2Radio2")}
+        ></Radio>
+      </RadioGroupField>
       <TextField
-        label="What date did you attend?"
+        label="What date did you attend your party on?"
         isRequired={false}
         isReadOnly={false}
         type="date"
@@ -122,6 +176,7 @@ export default function PartyCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
+              Field2,
               Field0: value,
               Field1,
             };
@@ -141,7 +196,7 @@ export default function PartyCreateForm(props) {
       <Field
         errorMessage={errors.Field1?.errorMessage}
         hasError={errors.Field1?.hasError}
-        label={"Update any pictures"}
+        label={"Upload any pictures you took"}
         isRequired={false}
         isReadOnly={false}
       >
@@ -151,6 +206,7 @@ export default function PartyCreateForm(props) {
               let value = key;
               if (onChange) {
                 const modelFields = {
+                  Field2,
                   Field0,
                   Field1: value,
                 };
@@ -165,6 +221,7 @@ export default function PartyCreateForm(props) {
               let value = initialValues?.Field1;
               if (onChange) {
                 const modelFields = {
+                  Field2,
                   Field0,
                   Field1: value,
                 };

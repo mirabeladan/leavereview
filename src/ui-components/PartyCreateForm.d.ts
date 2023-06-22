@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, RadioGroupFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { StorageManagerProps } from "@aws-amplify/ui-react-storage";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
@@ -14,16 +14,19 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type PartyCreateFormInputValues = {
+    Field2?: string;
     Field0?: string;
     Field1?: string;
 };
 export declare type PartyCreateFormValidationValues = {
+    Field2?: ValidationFunction<string>;
     Field0?: ValidationFunction<string>;
     Field1?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PartyCreateFormOverridesProps = {
     PartyCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    Field2?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     Field0?: PrimitiveOverrideProps<TextFieldProps>;
     Field1?: PrimitiveOverrideProps<StorageManagerProps>;
 } & EscapeHatchProps;
