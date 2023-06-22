@@ -14,5 +14,4 @@ type LeaveReview @model @auth(rules: [{allow: public}]) {
 
 type Revi @model @auth(rules: [{allow: public}]) {
   id: ID!
-}
- 
+} 
