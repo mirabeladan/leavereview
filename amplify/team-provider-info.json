@@ -16,7 +16,8 @@
         "review": {}
       },
       "storage": {
-        "s3reviewstorage4de8a21d": {}
+        "s3reviewstorage4de8a21d": {},
+        "s3reviewstorage07aa613c": {}
       }
     }
   }

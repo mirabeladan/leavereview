@@ -6,6 +6,36 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
+type EagerParty = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Party, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Field0?: string | null;
+  readonly Field1?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyParty = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Party, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Field0?: string | null;
+  readonly Field1?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Party = LazyLoading extends LazyLoadingDisabled ? EagerParty : LazyParty
+
+export declare const Party: (new (init: ModelInit<Party>) => Party) & {
+  copyOf(source: Party, mutator: (draft: MutableModel<Party>) => MutableModel<Party> | void): Party;
+}
+
 type EagerLeaveReview = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<LeaveReview, 'id'>;

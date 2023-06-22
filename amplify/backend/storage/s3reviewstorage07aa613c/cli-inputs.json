@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3reviewstorage07aa613c",
+  "bucketName": "review-storage-07aa613c",
+  "policyUUID": "eb16a231",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ",
+    "CREATE_AND_UPDATE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}

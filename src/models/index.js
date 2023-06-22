@@ -4,9 +4,10 @@ import { schema } from './schema';
 
 
 
-const { LeaveReview, Revi } = initSchema(schema);
+const { Party, LeaveReview, Revi } = initSchema(schema);
 
 export {
+  Party,
   LeaveReview,
   Revi
 };
